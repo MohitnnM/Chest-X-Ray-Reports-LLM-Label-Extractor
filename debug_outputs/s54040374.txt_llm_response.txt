@@ -1,0 +1,48 @@
+<think>
+Okay, so I'm trying to analyze this radiology report and label each condition based on the given rules. Let me go through it step by step.
+
+First, looking at the FINDINGS section:
+
+- "The cardiac, mediastinal and hilar contours appear stable." - This doesn't mention any of our conditions directly, so probably null.
+  
+- "The lungs appear clear." - That's a strong statement. Since there's no evidence of any condition listed here like consolidation or edema, I can mark this as 1 for No Finding.
+
+- "There is possibly a very small pleural effusion on the left although doubted." - The report says "doubted," which means it's uncertain. So according to rule 3, this should be labeled as -1.
+
+- "The bones appear demineralized." - This sounds like an issue with calcium levels in bone, but none of our conditions (like fracture) are directly mentioned here. Maybe null.
+
+- "There is a remodeled prior fracture deformity of the proximal right humerus with impaction." - The word 'remodeled' suggests previous issues but doesn't confirm a definite finding like a fracture. So this might be uncertain, labeled as -1.
+
+- "Vertebroplasty site along the lumbar spine is not completely characterized." - This is a negative statement, so according to rule 2, label it as 0 since it's explicitly stating something isn't characterized.
+
+Now, looking at the IMPRESSION:
+
+- "No evidence of acute cardiopulmonary disease." - This directly states that there's no finding, aligning with No Finding condition. So this is definitely present (1).
+
+I need to make sure I've labeled all 14 conditions correctly. Some weren't mentioned in the report, so they should be null.
+
+Wait a second, let me double-check if any conditions were explicitly negated. For example, "no pleural effusion" or something similar? The report says there's possibly a small effusion but doubts it, which I've labeled as -1 for uncertain. So that aligns with rule 2 since it's not definitively present.
+
+Also, the term "not completely characterized" in the impression refers to the vertebroplasty site, so labeling that as 0 makes sense because it's an explicit negation of a definite finding.
+
+I think I've covered all points. Now, putting it all together.
+</think>
+
+```json
+{
+    "Atelectasis": null,
+    "Cardiomegaly": null,
+    "Consolidation": null,
+    "Edema": null,
+    "Enlarged Cardiomediastinum": null,
+    "Fracture": -1,
+    "Lung Lesion": null,
+    "Lung Opacity": null,
+    "No Finding": 1,
+    "Pleural Effusion": -1,
+    "Pleural Other": null,
+    "Pneumonia": null,
+    "Pneumothorax": null,
+    "Support Devices": null
+}
+```

@@ -1,0 +1,53 @@
+<think>
+Okay, so I've got this radiology report to analyze and label each condition as either definitively present (1), absent (0), uncertain (-1), or null if not mentioned. Let's break it down step by step.
+
+First, I'll read through the report carefully. The findings section mentions several things:
+
+- The patient is post median sternotomy and had a CABG.
+- Mild to moderate cardiomegaly which isn't changing.
+- Atherosclerotic calcifications in the aorta noted again.
+- Pulmonary vasculature not engorged.
+- Lungs appear hyperinflated with small bilateral pleural effusions without focal consolidation.
+- Patchy bibasilar opacities may reflect areas of atelectasis.
+- No pneumothorax identified.
+- Diffuse demineralization and compression fractures in the thoracolumbar spine, unclear age.
+
+In the impression section:
+- Limited exam.
+- Small bilateral pleural effusions with probable bibasilar atelectasis.
+- Compression fractures throughout the thoracolumbar spine developed since ___, unclear age.
+
+Now, applying the rules:
+
+1. "No Finding" is only 1 if all others are 0 or null. Since there's a lot of findings, probably not 1 here.
+2. Explicitly negated conditions get 0. I don't see any negatives except maybe "no pneumothorax", but that's part of the findings.
+
+Looking at each condition:
+
+- Atelectasis: Patchy opacities suggest possible atelectasis. But it's patchy, not definite. So -1.
+- Cardiomegaly: Mild to moderate which is present, so 1.
+Wait no, because rule says only label as 1 if direct evidence. "Mild to moderate" might be considered unambiguous presence, but the user example has cardiomegaly as null, probably because it's just described without being definitively present.
+
+Wait, looking back: in the example output, Cardiomegaly is null. So maybe my initial thought was wrong.
+
+Perhaps mild/moderate isn't enough for 1. The rules say only label 1 if there's direct evidence. Since cardiomegaly is mentioned as mild to moderate, it might be present but not definitively so? Hmm, conflicting thoughts. I'll have to decide based on the example.
+</think>
+
+```json
+{
+    "Atelectasis": -1,
+    "Cardiomegaly": 1,
+    "Consolidation": null,
+    "Edema": null,
+    "Enlarged Cardiomediastinum": null,
+    "Fracture": -1,
+    "Lung Lesion": null,
+    "Lung Opacity": null,
+    "No Finding": null,
+    "Pleural Effusion": 0,
+    "Pleural Other": null,
+    "Pneumonia": null,
+    "Pneumothorax": 0,
+    "Support Devices": null
+}
+```

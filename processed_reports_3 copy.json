@@ -1,0 +1,42 @@
+{
+  "s59464544.txt": {
+    "findings": null,
+    "impression": null
+  },
+  "s50442068.txt": {
+    "findings": "FINDINGS:  PA and lateral views of the chest were obtained.  Lungs are\nhyperinflated with flattened diaphragms and coarsened reticular markings\ncompatible with emphysema/COPD.  There is no focal consolidation, pleural\neffusion or pneumothorax.  There is prominence of the pulmonary hila, right\ngreater than left, likely reflective of pulmonary hypertension. Heart size is\ntop normal.  Bony structures appear intact with dextroscoliosis of the\nT-spine.",
+    "impression": "IMPRESSION:  Mild cardiomegaly with prominence of central pulmonary arteries,\nlikely indicates pulmonary arterial hypertension given the underlying\nemphysema.  Please correlate clinically.  No evidence of pneumonia."
+  },
+  "s56181233.txt": {
+    "findings": "FINDINGS:  AP and lateral views of the chest are obtained.  Since the prior\nstudy, there has been much improvement in the bilateral lung base\nconsolidations likely representing atelectasis.  There has also been\nimprovement in the previously seen bilateral pleural effusions.  There is no\nevidence of congestive heart failure or prominent pulmonary edema.  There is\nno new focal consolidation or evidence of pneumothorax.  The previously seen\nleft subclavian line remains in standard position, terminating in the upper\nSVC.\n\nCONCLUSION:  Much improved bilateral lung base atelectasis and bilateral\npleural effusions.  No new focal consolidation, pulmonary edema or\npneumothorax.",
+    "impression": null
+  },
+  "s52496484.txt": {
+    "findings": "FINDINGS:\n\nPA and lateral chest radiographs were obtained.  The lungs are well expanded\nand clear.  There is no focal scarring in the right upper lobe is unchanged.\nPosterior rib deformities are stable.  There is no consolidation effusion or\npneumothorax.  Cardiac and mediastinal contours are normal.  There is no\npneumoperitoneum.",
+    "impression": "IMPRESSION:\n\nNo acute cardiopulmonary process.  No free air."
+  },
+  "s58383244.txt": {
+    "findings": "FINDINGS:\n\nThe heart is borderline enlarged, in the mediastinal and hilar contours are\nnormal. There is no pleural effusion or pneumothorax.  The lungs are not\nhyperinflated, and there is no focal consolidation concerning for pneumonia. A\nright chest port is present with tip terminating near the cavoatrial junction.\nThe upper abdomen is unremarkable in appearance.",
+    "impression": "IMPRESSION:\n\nNo pneumonia. Normal lung volumes. Borderline cardiomegaly."
+  },
+  "s51474316.txt": {
+    "findings": null,
+    "impression": "IMPRESSION:\n\nPreviously seen mild mediastinal prominence has resolved.  There is minimal\npulmonary edema and there are small bilateral effusions. There are no\npneumothoraces."
+  },
+  "s54551565.txt": {
+    "findings": "FINDINGS:\n\nPA and lateral views of the chest provided. There is no focal consolidation,\neffusion, or pneumothorax. The cardiomediastinal silhouette is normal. Imaged\nosseous structures are intact.  No free air below the right hemidiaphragm is\nseen.",
+    "impression": "IMPRESSION:\n\nNo acute intrathoracic process."
+  },
+  "s59724216.txt": {
+    "findings": null,
+    "impression": "IMPRESSION:\n\nIn comparison with the study of ___, there is no evidence of acute\ncardiopulmonary disease. No pneumonia, vascular congestion, pleural effusion,\nor evidence for pulmonary or skeletal metastases."
+  },
+  "s50915465.txt": {
+    "findings": "FINDINGS:\n\nAs compared to the prior examination, loculated right effusion with adjacent\nsubpleural atelectasis has slightly increased since the prior.  Most notably\non the lateral view.  No new consolidation.  Bilateral upper lobe scarring are\nstable.  No pulmonary edema.  Cardiomediastinal contours are unchanged.  No\npneumothorax.  Left-sided rib changes also unchanged.",
+    "impression": "IMPRESSION:\n\nSlight increase in the right loculated effusion and adjacent\natelectasis/opacity."
+  },
+  "s51918830.txt": {
+    "findings": "FINDINGS:\n\nThe lungs are clear without focal consolidation.  No pleural effusion or\npneumothorax is seen.  The cardiac silhouette remains top normal.  Mediastinal\ncontours are stable.  The hilar contours are stable.  Likely osteophytes are\nseen at various levels along the thoracic spine.",
+    "impression": "IMPRESSION:\n\nNo acute cardiopulmonary process."
+  }
+}

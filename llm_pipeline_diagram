@@ -1,0 +1,36 @@
+// LLM-Based Clinical Label Extraction Pipeline
+digraph {
+	rankdir=LR size="10,5"
+	node [color="#f0f0f0" fontname=Helvetica shape=box style=filled]
+	A [label="Raw Radiology Report
+(Text File)"]
+	B [label="Preprocessing
+- Clean text
+- Normalize format"]
+	C [label="Prompt Engineering
+- Chain-of-Thought
+- Structured output format"]
+	D1 [label="LLM Inference
+Model 1: LLaMA3.1"]
+	D2 [label="LLM Inference
+Model 2: DeepSeek R1"]
+	E [label="Postprocessing
+- JSON output
+- Label standardization"]
+	F [label="Evaluation
+- Accuracy
+- TPR/FPR
+- Per-label metrics"]
+	G [label="Insights
+- Error analysis
+- Model comparison
+- Future improvements"]
+	A -> B
+	B -> C
+	C -> D1
+	C -> D2
+	D1 -> E
+	D2 -> E
+	E -> F
+	F -> G
+}

@@ -1,0 +1,40 @@
+<think>
+Alright, I'm looking at this radiology report and need to figure out how to label each condition based on the given rules. Let's break it down step by step.
+
+First, the report mentions "Large lung volumes suggest hyperinflation due to obstructive airways disease although no bullae are seen and there has been no change since ___ or __." This suggests possible consolidation because hyperinflation can lead to consolidations in affected areas. But I don't see any explicit mention of consolidation. The term used is "suggest," which implies a possibility, so this would fall under -1.
+
+Next, it says, "Lungs are clear of any focal abnormality." This directly indicates there's no finding; the lungs are normal. So "No Finding" should be 1 here since all other conditions aren't mentioned and this is definite evidence.
+
+The report mentions "Heart size is top-normal," which means no cardiomegaly, so that's definitely not present (0).
+
+"Lungs are clear of any focal abnormality. Heart size is top- normal." Both are confirmed as clear, so 1 for Cardiomegaly and No Finding.
+
+No pleural abnormalities or central lymph node enlargement are mentioned, so "Pleural Effusion" and "Pleural Other" are both definitely absent (0).
+
+"Pneumonia or Pneumothorax?" The report doesn't specify either. It talks about hyperinflation due to obstructive airways disease, which is different from pneumonia, but the presence of any of these is unclear. So I'll label both as null.
+
+The mention of "Moderate rightward deviation of the trachea in the neck is not accompanied by appreciable narrowing" doesn't indicate anything specific about edema or lung opacity because it's just a descriptive note without implying any condition. Thus, 0 for Edema and Lung Opacity.
+
+"Enlarged thyroid" is mentioned as the cause but isn't one of the conditions we're evaluating here (Support Devices refers to imaging devices), so that doesn't affect our current labels.
+
+Putting it all together, I'll label each condition accordingly.
+</think>
+
+```json
+{
+    "Atelectasis": null,
+    "Cardiomegaly": 0,
+    "Consolidation": -1,
+    "Edema": 0,
+    "Enlarged Cardiomediastinum": null,
+    "Fracture": null,
+    "Lung Lesion": null,
+    "Lung Opacity": 0,
+    "No Finding": 1,
+    "Pleural Effusion": 0,
+    "Pleural Other": null,
+    "Pneumonia": null,
+    "Pneumothorax": -1,
+    "Support Devices": null
+}
+```

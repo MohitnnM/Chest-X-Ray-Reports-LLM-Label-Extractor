@@ -1,0 +1,66 @@
+<think>
+Alright, I'm going to analyze this radiology report step by step using the given rules. First, I'll read through the impression section carefully.
+
+I notice that the report mentions "Right-sided pacer" with leads in specific locations but doesn't directly mention any of the conditions listed. So, for the specified conditions like Atelectasis or Fracture, there's no direct evidence yet.
+
+Next, it says "worsening bilateral airspace and perihilar vascular congestion consistent with mild-to-moderate pulmonary edema." This directly points to "Edema" being present, so I'll label Edema as 1.
+
+Then, "increasing bilateral layering effusions" likely refers to "Pleural Effusion," but the report doesn't explicitly state this. It just mentions effusions without specifying pleural or other types, so it's safer to mark Pleural Effusion as null since there's no direct mention.
+
+"Bibasilar airspace opacities likely reflect compressive atelectasis" suggests "Atelectasis." Since it uses "likely," which implies uncertainty beyond clear evidence, I'll label Atelectasis as -1. However, according to the rules, only 1, 0, or null are allowed; maybe I misread that. Wait, the instructions say labels can be 1, 0, -1, or null. So if it's uncertain but suggests a condition might be present, perhaps it should be labeled as -1.
+
+Moving on, "No pneumothorax is seen" clearly indicates that Pneumothorax is absent. So I'll label Pneumothorax as 0.
+
+Then, "Severe degenerative changes are seen of an incompletely visualized left glenohumeral joint, where there is also flattening of the humeral head which may represent a component of avascular necrosis." This suggests "Avascular Necrosis" but it's not listed among the conditions. So since Avascular Necrosis isn't one of our specified keys, I'll leave it null.
+
+Looking at the rest: "Clinical correlation is advised," which doesn't mention any specific condition directly, so all other unspecified conditions remain null unless explicitly mentioned.
+
+Now, checking each condition:
+
+- Atelectasis: -1 (from the opacities)
+- Cardiomegaly: No mention
+- Consolidation: Not mentioned
+- Edema: 1
+- Enlarged Cardiomediastinum: Not mentioned
+- Fracture: No fractured wires are clearly stated, except that they're "unchanged"
+- Lung Lesion: Not present
+- Lung Opacity: Not mentioned (only airspace issues)
+- No Finding: Only if all others are 0 or null. Since Edema is 1, No Finding can't be 1.
+- Pleural Effusion: Null because the report mentions effusions but not specifically pleural effusion.
+- Pleural Other: Null
+- Pneumonia: Not mentioned (only edema)
+- Pneumothorax: 0
+- Support Devices: Not mentioned
+
+Wait, earlier I considered Atelectasis as -1 based on the opacities. The example output treats similar cases with null but maybe I should double-check.
+
+Another perspective: "Bibasilar airspace opacities likely reflect compressive atelectasis" – if it's a diagnosis of atelectasis, then perhaps it's definitively present (1). But since it uses "likely," which implies uncertainty beyond absolute certainty. So perhaps -1 is appropriate because the radiologist isn't 100% sure but leans towards it.
+
+So final labels:
+
+Atelectasis: -1
+Edema: 1
+Pleural Effusion: null
+Pneumothorax: 0
+
+Others are null unless any condition is explicitly mentioned, which doesn't happen. Also, since Edema is present (1), No Finding can't be 1.
+</think>
+
+```json
+{
+    "Atelectasis": -1,
+    "Cardiomegaly": null,
+    "Consolidation": null,
+    "Edema": 1,
+    "Enlarged Cardiomediastinum": null,
+    "Fracture": null,
+    "Lung Lesion": null,
+    "Lung Opacity": null,
+    "No Finding": null,
+    "Pleural Effusion": null,
+    "Pleural Other": null,
+    "Pneumonia": null,
+    "Pneumothorax": 0,
+    "Support Devices": null
+}
+```

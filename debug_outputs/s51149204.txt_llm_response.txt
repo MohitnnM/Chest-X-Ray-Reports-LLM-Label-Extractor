@@ -1,0 +1,42 @@
+<think>
+Alright, I need to analyze this radiology report and label each condition as 1, 0, -1, or null based on the given rules. Let me go through the report step by step.
+
+First, the report mentions "right upper extremity PICC has been removed." That doesn't relate to any of the specified conditions, so I'll label this as null.
+
+Next, it says there are increased opacities in the right lung, most prominent along a minor fissure. This clearly points to opacification, which could be due to various issues like pneumonia or infection. So, "Lung Opacity" is 1 because it's definitively present.
+
+The report states there's no definite pleural effusion. That directly contradicts the presence of effusion, so I'll label "Pleural Effusion" as 0.
+
+It also mentions that there's no pneumothorax evident, which clearly indicates "Pneumothorax" is absent, so 0.
+
+Looking at the left lung, it's described as grossly clear. This suggests no findings on the left side, so I'll label "Lung Lesion," "Lung Opacity," and any other conditions related to the left lung (like Cardiomegaly) as null since there's no evidence of anything.
+
+The cardiac and mediastinal contours are normal, which means there's nothing unusual in those areas. So, "Cardiomegaly" is 0 because it's explicitly stated that they're normal.
+
+The upper abdominal drains are noted but incompletely evaluated. Since the presence or absence isn't definitively clear from this report, I'll label "Support Devices" as null unless more information is provided, which in this case there isn't.
+
+In the impression section, it says patchy opacification throughout the right lung and worse in the right upper lobe, compatible with multifocal pneumonia. This definitely indicates that "Pneumonia" is present because of the mention of opacification and compatibility with the condition. So, I'll label "Pneumonia" as 1.
+
+Lastly, the report doesn't mention anything about multifocal consolidation or enlarged heart structures like mediastinum or cardiomegaly. Therefore, conditions like "Consolidation," "Enlarged Cardiomediastinum," and "Atelectasis" are all null because they're not mentioned.
+
+I need to make sure that each condition is correctly labeled based on the presence or absence of evidence without any explicit negations.
+</think>
+
+```json
+{
+    "Atelectasis": null,
+    "Cardiomegaly": 0,
+    "Consolidation": null,
+    "Edema": null,
+    "Enlarged Cardiomediastinum": null,
+    "Fracture": null,
+    "Lung Lesion": 1,
+    "Lung Opacity": 1,
+    "No Finding": null,
+    "Pleural Effusion": 0,
+    "Pleural Other": null,
+    "Pneumonia": 1,
+    "Pneumothorax": 0,
+    "Support Devices": null
+}
+```

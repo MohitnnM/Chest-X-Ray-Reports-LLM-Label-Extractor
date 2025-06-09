@@ -1,0 +1,181 @@
+{
+  "s52015620.txt": {
+    "Atelectasis": 0,
+    "Cardiomegaly": 0,
+    "Consolidation": 0,
+    "Edema": 0,
+    "Enlarged Cardiomediastinum": 0,
+    "Fracture": 0,
+    "Lung Lesion": 0,
+    "Lung Opacity": 0,
+    "No Finding": 1,
+    "Pleural Effusion": 0,
+    "Pleural Other": 0,
+    "Pneumonia": 0,
+    "Pneumothorax": 0
+  },
+  "s58392096.txt": {
+    "No Finding": 1
+  },
+  "s51491073.txt": {
+    "No Finding": 1
+  },
+  "s53935580.txt": {
+    "No Finding": 1
+  },
+  "s57650631.txt": {
+    "No Finding": 1
+  },
+  "s50039783.txt": {
+    "Atelectasis": -1,
+    "Cardiomegaly": -1,
+    "Consolidation": -1,
+    "Edema": -1,
+    "Enlarged Cardiomediastinum": -1,
+    "Fracture": -1,
+    "Lung Lesion": -1,
+    "Lung Opacity": -1,
+    "No Finding": -1,
+    "Pleural Effusion": 1,
+    "Pleural Other": -1,
+    "Pneumonia": -1,
+    "Pneumothorax": -1
+  },
+  "s58961543.txt": {
+    "Atelectasis": -1,
+    "Cardiomegaly": -1,
+    "Consolidation": -1,
+    "Edema": -1,
+    "Enlarged Cardiomediastinum": -1,
+    "Fracture": -1,
+    "Lung Lesion": -1,
+    "Lung Opacity": -1,
+    "No Finding": 1,
+    "Pleural Effusion": -1,
+    "Pleural Other": -1,
+    "Pneumonia": 0,
+    "Pneumothorax": -1,
+    "Support Devices": -1
+  },
+  "s52601670.txt": {
+    "Atelectasis": 1,
+    "Pneumonia": 0,
+    "Edema": 0,
+    "Enlarged Cardiomediastinum": -1,
+    "No Finding": 1
+  },
+  "s54246906.txt": {
+    "Pneumothorax": 0,
+    "Pleural Effusion": 0,
+    "No Finding": 1
+  },
+  "s51171012.txt": {
+    "Atelectasis": -1,
+    "Cardiomegaly": -1,
+    "Consolidation": 0,
+    "Edema": -1,
+    "Enlarged Cardiomediastinum": 0,
+    "Fracture": -1,
+    "Lung Lesion": -1,
+    "Lung Opacity": 0,
+    "No Finding": 1,
+    "Pleural Effusion": 0,
+    "Pleural Other": -1,
+    "Pneumonia": 0,
+    "Pneumothorax": 0,
+    "Support Devices": -1
+  },
+  "s54750638.txt": {
+    "Atelectasis": 1,
+    "Cardiomegaly": 0,
+    "Consolidation": 0,
+    "Edema": 0,
+    "Enlarged Cardiomediastinum": 0,
+    "Fracture": 0,
+    "Lung Lesion": 0,
+    "Lung Opacity": 0,
+    "No Finding": 1,
+    "Pleural Effusion": 0,
+    "Pleural Other": 0,
+    "Pneumonia": 0,
+    "Pneumothorax": 0,
+    "Support Devices": 0
+  },
+  "s51487019.txt": {
+    "No Finding": 1
+  },
+  "s53056377.txt": {
+    "No Finding": 1
+  },
+  "s50590218.txt": {
+    "Atelectasis": 0,
+    "Cardiomegaly": 0,
+    "Consolidation": 0,
+    "Edema": 0,
+    "Enlarged Cardiomediastinum": 0,
+    "Fracture": 0,
+    "Lung Lesion": -1,
+    "Lung Opacity": 1,
+    "No Finding": 0,
+    "Pleural Effusion": 0,
+    "Pleural Other": -1,
+    "Pneumonia": 0,
+    "Pneumothorax": 1,
+    "Support Devices": 0
+  },
+  "s52827380.txt": {
+    "Pleural Effusion": 1
+  },
+  "s55639880.txt": {
+    "No Finding": 1
+  },
+  "s58046314.txt": {
+    "Atelectasis": -1,
+    "Cardiomegaly": 1,
+    "Consolidation": -1,
+    "Edema": 1,
+    "Enlarged Cardiomediastinum": -1,
+    "Fracture": -1,
+    "Lung Lesion": -1,
+    "Lung Opacity": -1,
+    "No Finding": -1,
+    "Pleural Effusion": 1,
+    "Pleural Other": -1,
+    "Pneumonia": -1,
+    "Pneumothorax": -1,
+    "Support Devices": -1
+  },
+  "s53642034.txt": {
+    "No Finding": 1,
+    "Atelectasis": 0,
+    "Cardiomegaly": 0,
+    "Consolidation": 0,
+    "Edema": 0,
+    "Enlarged Cardiomediastinum": 0,
+    "Fracture": 0,
+    "Lung Lesion": 0,
+    "Lung Opacity": 0,
+    "Pleural Effusion": 0,
+    "Pleural Other": 0,
+    "Pneumonia": 0,
+    "Pneumothorax": 0
+  },
+  "s55275081.txt": {
+    "Atelectasis": 0,
+    "Cardiomegaly": 0,
+    "Consolidation": 0,
+    "Edema": -1,
+    "Enlarged Cardiomediastinum": 0,
+    "Fracture": 0,
+    "Lung Lesion": 0,
+    "Lung Opacity": 0,
+    "No Finding": 1,
+    "Pleural Effusion": -1,
+    "Pleural Other": 0,
+    "Pneumonia": 0,
+    "Pneumothorax": 0
+  },
+  "s51625619.txt": {
+    "No Finding": 1
+  }
+}

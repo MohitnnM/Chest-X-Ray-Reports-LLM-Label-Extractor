@@ -1,23 +1,20 @@
 import pandas as pd
 import json
 
-# Load and merge data
-excel_data = pd.read_excel("DataChecking.xlsx", sheet_name="Original_Data", header=1)
-with open("llama_results/all_extracted_labels_llama.json", "r") as f:
-    json_data = json.load(f)
+dataset = pd.read_excel("DataChecking.xlsx", sheet_name="Original_Data", header=1)
+with open("llama_results/all_extracted_labels_llama.json", "r") as results_data:
+    json_data = json.load(results_data)
 
-# Quick merge
 json_df = pd.DataFrame.from_dict(json_data, orient="index")
 json_df.index = json_df.index.str.replace("s", "").str.replace(".txt", "").astype(int)
 merged = pd.merge(excel_data[excel_data["study_id"].isin(json_df.index)], 
                   json_df.add_suffix("_pred"), left_on="study_id", right_index=True)
 
-# Labels to analyze
 labels = ["Atelectasis", "Cardiomegaly", "Consolidation", "Edema", "Enlarged Cardiomediastinum", 
           "Fracture", "Lung Lesion", "Lung Opacity", "No Finding", "Pleural Effusion", 
           "Pleural Other", "Pneumonia", "Pneumothorax", "Support Devices"]
 
-# Calculate metrics for all labels at once
+
 def calc_metrics(df, labels):
     results = []
     for label in labels:
@@ -41,10 +38,9 @@ def calc_metrics(df, labels):
     return pd.DataFrame(results, columns=["Label", "TP", "FP", "TN", "FN", "TPR", "FPR", 
                                          "Precision", "Specificity", "Total", "Positive", "Negative"])
 
-# Calculate and display results
 df = calc_metrics(merged, labels)
 
-# Format display
+
 display_df = df.copy()
 for col in ["TPR", "FPR", "Precision", "Specificity"]:
     display_df[col] = display_df[col].apply(lambda x: f"{x:.4f}" if pd.notna(x) else "N/A")
@@ -54,7 +50,6 @@ print("PERFORMANCE ANALYSIS")
 print("="*100)
 print(display_df.to_string(index=False))
 
-# Summary stats
 valid_metrics = df.dropna(subset=["TPR", "FPR", "Precision", "Specificity"])
 totals = df[["TP", "FP", "TN", "FN"]].sum()
 overall_tpr = totals.TP / (totals.TP + totals.FN) if (totals.TP + totals.FN) > 0 else 0
@@ -65,7 +60,7 @@ print(f"\nSUMMARY:")
 print(f"Avg TPR: {valid_metrics['TPR'].mean():.4f} | Avg FPR: {valid_metrics['FPR'].mean():.4f}")
 print(f"Overall TPR: {overall_tpr:.4f} | Overall FPR: {overall_fpr:.4f} | Overall Precision: {overall_precision:.4f}")
 
-# Issues
+
 issues = df[(df['FPR'] > 0.1) | (df['TPR'] < 0.7) | (df['FPR'] == 1.0) | (df['TPR'] == 0.0)]
 if not issues.empty:
     print(f"\nISSUES FOUND:")

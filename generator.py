@@ -1,7 +1,7 @@
 import requests
 import json
 
-def generate_prompt(prompt, model_name="deepseek-r1:7b"):
+def generate_prompt(prompt, model_name="llama3.1:8b"):
     url = "http://localhost:11434/api/generate"
     headers = {
         "Content-Type": "application/json"

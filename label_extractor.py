@@ -10,7 +10,7 @@ LABELS = [
     "Pneumonia", "Pneumothorax", "Support Devices"
 ]
 
-def create_cot_prompt(report_text):
+def prompt_create(report_text):
     prompt = f"""
 You are a board-certified radiologist analyzing a radiology report. Your task is to:
 1. Carefully read the entire report
@@ -61,63 +61,48 @@ OUTPUT:
 """
     return prompt
 
-def parse_llm_output(llm_output):
-    try:
-        match = re.search(r'\{.*?\}', llm_output, re.DOTALL)
-        if match:
-            raw_json = match.group(0)
-            parsed = json.loads(raw_json)
-            return {k: (int(v) if v is not None else None) for k, v in parsed.items() if k in LABELS}
-    except Exception as e:
-        print("⚠️ Parse error:", e)
-    return {}
+def parse_output(output):
+    results = {}
+    match = re.search(r'\{.*?\}', output, re.DOTALL)
+    if match:
+        raw_json = match.group(0)
+        parsed = json.loads(raw_json)
+        for k, v in parsed.items():
+            if k in LABELS:
+                if v is not None:
+                    results[k] = int(v)
+                else:
+                    results[k] = None
+    return results
 
 def main():
-    all_labels = {}
+    all_lab = {}
     os.makedirs("debug_outputs", exist_ok=True)
 
-    total_processed = 0
+    tot_proc = 0
+    file_name = 'processed_reports.json'
 
-    for file_num in range(1, 11):  # 1 through 10
-        file_name = f'processed_reports_{file_num}.json'
-        print(f"\n📂 Starting file: {file_name}")
+    with open(file_name, 'r', encoding='utf-8') as f:
+        reports = json.load(f)
 
-        with open(file_name, 'r', encoding='utf-8') as f:
-            reports = json.load(f)
+    for i, (fname, sections) in enumerate(reports.items(), start=1):
+        tot_proc += 1
+        report_text = (sections.get('findings') or '') + "\n" + (sections.get('impression') or '')
+        prompt = prompt_create(report_text)
 
-        for i, (fname, sections) in enumerate(reports.items(), start=1):
-            total_processed += 1
-            report_text = (sections.get('findings') or '') + "\n" + (sections.get('impression') or '')
-            prompt = create_cot_prompt(report_text)
+        llm_response = generate_prompt(prompt)
+        with open(f'debug_outputs/{fname}_llm_response.txt', 'w', encoding='utf-8') as fout:
+            fout.write(llm_response or 'None')
 
-            print(f"[{total_processed}] Processing {fname} from {file_name}...")
+        labels = parse_output(llm_response or '')
+        if not any(val == 1 for val in labels.values()):
+            labels["No Finding"] = 1
+        all_lab[fname] = labels
 
-            try:
-                llm_response = generate_prompt(prompt)
-                with open(f'debug_outputs/{fname}_llm_response.txt', 'w', encoding='utf-8') as fout:
-                    fout.write(llm_response or 'None')
-
-                labels = parse_llm_output(llm_response or '')
-
-                if not any(val == 1 for val in labels.values()):
-                    labels["No Finding"] = 1
-
-                all_labels[fname] = labels
-
-            except Exception as e:
-                print(f"⚠️ Error processing {fname}: {e}")
-                all_labels[fname] = {}
-
-            # Save every 10 reports
-            if total_processed % 10 == 0 or total_processed == sum(len(json.load(open(f'processed_reports_{n}.json'))) for n in range(1, 11)):
-                with open('extracted_labels_deepseek_all.json', 'w', encoding='utf-8') as fout:
-                    json.dump(all_labels, fout, indent=2)
-                print(f"✅ Saved progress at {total_processed} reports")
-
-    print(f"\n✅ Extraction complete for {total_processed} reports. Saved to extracted_labels_llama_all.json")
+        if tot_proc % 10 == 0:
+            with open('extracted_labels_deepseek_all.json', 'w', encoding='utf-8') as fout:
+                json.dump(all_lab, fout, indent=4)
+                print("Saved")
 
 if __name__ == '__main__':
     main()
-
-#important:
-#wsl -e bash -c "cd /home/mohit/Chest-X-Ray-Reports-LLM-Label-Extractor-1 && python3 label_extractor.py"

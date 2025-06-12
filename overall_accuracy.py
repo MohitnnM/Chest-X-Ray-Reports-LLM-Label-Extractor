@@ -8,47 +8,47 @@ LABELS = [
     "Pleural Other", "Pneumonia", "Pneumothorax", "Support Devices"
 ]
 
-def calculate_overall_accuracy(ground_truth_path, predictions_path):
-    ground_truth = pd.read_excel(ground_truth_path, sheet_name='Original_Data', header=1)
-    ground_truth.columns = ground_truth.columns.str.strip() 
+def calculate_accuracy(excelData_path, results_path):
+    excelData = pd.read_excel(excelData_path, sheet_name='Original_Data', header=1)
+    excelData.columns = excelData.columns.str.strip() 
 
-    with open(predictions_path) as f:
-        preds = json.load(f)
+    with open(results_path) as f:
+        results = json.load(f)
 
-    total_correct = 0
-    total_labels = 0
+    tot_corr = 0
+    tot_lab = 0
     
-    for filename, pred_labels in preds.items():
+    for filename, result_labels in results.items():
         study_id = int(filename[1:-4])
 
-        truth_row = ground_truth[ground_truth['study_id'] == study_id]
+        data_row = excelData[excelData['study_id'] == study_id]
 
         for label in LABELS:
-            truth_value = truth_row[label].values[0]
+            data_value = data_row[label].values[0]
 
-            if truth_value not in [1, 0, -1]:
+            if data_value not in [1, 0, -1]:
                 continue
 
-            pred_value = pred_labels.get(label)
+            result_value = result_labels.get(label)
 
-            if isinstance(pred_value, str):
-                pred_value = pred_value.strip()
-                if pred_value in ["null", "None", ""]:
-                    pred_value = None
-                elif pred_value in ["1", "0", "-1"]:
-                    pred_value = int(pred_value)
+            if isinstance(result_value, str):
+                result_value = result_value.strip()
+                if result_value in ["null", "None", ""]:
+                    result_value = None
+                elif result_value in ["1", "0", "-1"]:
+                    result_value = int(result_value)
 
-            if pred_value == truth_value:
-                total_correct += 1
+            if result_value == data_value:
+                tot_corr += 1
 
-            total_labels += 1
+            tot_lab += 1
 
-    overall_accuracy = total_correct / total_labels if total_labels > 0 else 0.0
-    return overall_accuracy, total_correct, total_labels
+    overall_accuracy = tot_corr / tot_lab if tot_lab > 0 else 0.0
+    return overall_accuracy, tot_corr, tot_lab
 
 if __name__ == "__main__":
-    accuracy, correct, total = calculate_overall_accuracy(
-        ground_truth_path="DataChecking.xlsx",
-        predictions_path="llama_results/all_extracted_labels_llama.json"
+    accuracy, correct, total = calculate_accuracy(
+        excelData_path="DataChecking.xlsx",
+        results_path="llama_results/all_extracted_labels_llama.json"
     )
     print(f"\nOverall Accuracy: {accuracy:.2%} ({correct}/{total} labels correct)")

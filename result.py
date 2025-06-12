@@ -9,37 +9,34 @@ LABELS = [
     "Pleural Other", "Pneumonia", "Pneumothorax", "Support Devices"
 ]
 
-def calculate_per_label_accuracy(ground_truth_path, predictions_path):
-    ground_truth = pd.read_excel(ground_truth_path, sheet_name='Original_Data', header=1)
-    ground_truth.columns = ground_truth.columns.str.strip()  
+def calculate_label_accuracy(excelData_path, result_path):
+    data = pd.read_excel(excelData_path, sheet_name='Original_Data', header=1)
+    data.columns = data.columns.str.strip()  
 
-    with open(predictions_path) as f:
-        preds = json.load(f)
+    with open(result_path) as f:
+        results = json.load(f)
 
     label_stats = defaultdict(lambda: {'correct': 0, 'total': 0})
     
 
-    for filename, pred_labels in preds.items():
-
-
-        study_id = int(filename[1:-4]) '
-        truth_row = ground_truth[ground_truth['study_id'] == study_id]
+    for filename, result_labels in results.items():
+        study_id = int(filename[1:-4]) 
+        data_row = data[data['study_id'] == study_id]
             
         for label in LABELS:
+            data_value = truth_row[label].values[0]
 
-            truth_value = truth_row[label].values[0]
+            result_value = result_labels.get(label)
 
-            pred_value = pred_labels.get(label)
-
-            if isinstance(pred_value, str):
-                pred_value = pred_value.strip()
-                if pred_value in ["null", "None", ""]:
-                    pred_value = None
-                elif pred_value in ["1", "0", "-1"]:
-                    pred_value = int(pred_value)
+            if isinstance(result_value, str):
+                result_value = result_value.strip()
+                if result_value in ["null", "None", ""]:
+                    result_value = None
+                elif result_value in ["1", "0", "-1"]:
+                    result_value = int(result_value)
 
 
-            if pred_value == truth_value:
+            if result_value == data_value:
                 label_stats[label]['correct'] += 1
             label_stats[label]['total'] += 1
 
@@ -63,9 +60,9 @@ def calculate_per_label_accuracy(ground_truth_path, predictions_path):
 
 
 if __name__ == "__main__":
-    per_label_results = calculate_per_label_accuracy(
-        ground_truth_path="DataChecking.xlsx",
-        predictions_path="llama_results/all_extracted_labels_llama.json"
+    per_label_results = calculate_label_accuracy(
+        excelData_path="DataChecking.xlsx",
+        result_path="llama_results/all_extracted_labels_llama.json"
     )
     
 
